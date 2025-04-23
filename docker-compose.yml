@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  titanic-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - titanic-network
+    environment:
+      - ENV=production
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - titanic-network
+
+networks:
+  titanic-network:
+    driver: bridge
