@@ -48,3 +48,8 @@ async def get_model_details():
 @application.get("/status")
 async def check_service_status():
     return {"health": "operational"}
+    
+@application.get("/config")
+async def get_config():
+    api_key = os.getenv("API_KEY", "not_set")
+    return {"api_key": api_key}
