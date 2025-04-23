@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pickle
 from fastapi import FastAPI, HTTPException
